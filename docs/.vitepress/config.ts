@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig } from 'vitepress';
 
 export default defineConfig({
   title: 'Icons',
@@ -18,4 +18,4 @@ export default defineConfig({
     ],
     socialLinks: [{ icon: 'github', link: 'https://github.com/fjacquet/icons' }],
   },
-})
+});

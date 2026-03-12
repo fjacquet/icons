@@ -1,8 +1,7 @@
-
 # Engineering Constitution
 
 **Project:** `fjacquet/icons`  
-**Scope:** React + TypeScript + GitHub Pages + MCP server (future)  
+**Scope:** React + TypeScript + GitHub Pages + MCP server (future)
 
 This document is the **constitution** for this project: it defines how we write code, how we keep it simple, and which practices are non‑negotiable.
 
@@ -342,4 +341,3 @@ Before merging a PR:
    - Is the code **functional, typed, and testable**?
 
 If the answer to any of these is “no”, fix the code or open a follow‑up issue before merging.
-

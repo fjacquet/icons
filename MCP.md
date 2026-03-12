@@ -18,13 +18,14 @@ npm run mcp-server
 
 Search the icon catalog.
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `query` | `string` | — | Case-insensitive substring match on icon name |
-| `library` | `string` | — | Filter by library ID: `fa6` `md` `fi` `bs` `lu` `ri` `vsc` `si` `tb` `hi2` |
-| `limit` | `number` | `50` | Max results (1–500) |
+| Parameter | Type     | Default | Description                                                                |
+| --------- | -------- | ------- | -------------------------------------------------------------------------- |
+| `query`   | `string` | —       | Case-insensitive substring match on icon name                              |
+| `library` | `string` | —       | Filter by library ID: `fa6` `md` `fi` `bs` `lu` `ri` `vsc` `si` `tb` `hi2` |
+| `limit`   | `number` | `50`    | Max results (1–500)                                                        |
 
 **Example:**
+
 ```
 list_icons(query="cloud", library="lu", limit=10)
 ```
@@ -35,15 +36,16 @@ list_icons(query="cloud", library="lu", limit=10)
 
 Render a single icon as a standalone SVG string.
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `name` | `string` | required | PascalCase icon name, e.g. `FaBeer` |
-| `library` | `string` | required | Library ID, e.g. `fa6` |
-| `size` | `number` | `64` | Size in px (16–512) |
-| `color` | `string` | `#000000` | Icon color as hex |
-| `background` | `string\|null` | `null` | Background fill color, or `null` for transparent |
+| Parameter    | Type           | Default   | Description                                      |
+| ------------ | -------------- | --------- | ------------------------------------------------ |
+| `name`       | `string`       | required  | PascalCase icon name, e.g. `FaBeer`              |
+| `library`    | `string`       | required  | Library ID, e.g. `fa6`                           |
+| `size`       | `number`       | `64`      | Size in px (16–512)                              |
+| `color`      | `string`       | `#000000` | Icon color as hex                                |
+| `background` | `string\|null` | `null`    | Background fill color, or `null` for transparent |
 
 **Example:**
+
 ```
 render_icon(name="LuCloud", library="lu", size=128, color="#007DB8")
 ```
@@ -54,14 +56,15 @@ render_icon(name="LuCloud", library="lu", size=128, color="#007DB8")
 
 Render multiple icons with the same settings (max 50 per call).
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `icons` | `{name, library}[]` | required | List of icons to render |
-| `size` | `number` | `64` | Applied to all icons |
-| `color` | `string` | `#000000` | Applied to all icons |
-| `background` | `string\|null` | `null` | Applied to all icons |
+| Parameter    | Type                | Default   | Description             |
+| ------------ | ------------------- | --------- | ----------------------- |
+| `icons`      | `{name, library}[]` | required  | List of icons to render |
+| `size`       | `number`            | `64`      | Applied to all icons    |
+| `color`      | `string`            | `#000000` | Applied to all icons    |
+| `background` | `string\|null`      | `null`    | Applied to all icons    |
 
 **Example:**
+
 ```
 render_icon_batch(
   icons=[{name:"LuServer",library:"lu"},{name:"LuDatabase",library:"lu"}],
@@ -105,15 +108,15 @@ Then in a note or agent prompt:
 
 ## Library IDs
 
-| ID | Library |
-|----|---------|
-| `fa6` | Font Awesome 6 |
-| `md` | Material Design |
-| `fi` | Feather |
-| `bs` | Bootstrap |
-| `lu` | Lucide |
-| `ri` | Remix |
-| `vsc` | VS Code |
-| `si` | Simple Icons |
-| `tb` | Tabler |
-| `hi2` | Heroicons |
+| ID    | Library         |
+| ----- | --------------- |
+| `fa6` | Font Awesome 6  |
+| `md`  | Material Design |
+| `fi`  | Feather         |
+| `bs`  | Bootstrap       |
+| `lu`  | Lucide          |
+| `ri`  | Remix           |
+| `vsc` | VS Code         |
+| `si`  | Simple Icons    |
+| `tb`  | Tabler          |
+| `hi2` | Heroicons       |

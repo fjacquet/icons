@@ -1,14 +1,14 @@
+# Product Requirements Document
 
-# Product Requirements Document  
 **Project:** React Icons to SVG Exporter  
 **Owner:** Frederic Jacquet  
-**Repo:** `fjacquet/icons`  
+**Repo:** `fjacquet/icons`
 
 ---
 
 ## 1. Overview
 
-The **React Icons to SVG Exporter** is a small web tool that renders React-based icon components to **standalone SVG files** so they can be reused in **presentations** (PowerPoint, Keynote, Google Slides, etc.).  
+The **React Icons to SVG Exporter** is a small web tool that renders React-based icon components to **standalone SVG files** so they can be reused in **presentations** (PowerPoint, Keynote, Google Slides, etc.).
 
 The app is built with **React** and is **published via GitHub Pages** for easy hosting and distribution.
 
@@ -256,4 +256,3 @@ The app is built with **React** and is **published via GitHub Pages** for easy h
    - Documentation, badges, contribution guidelines.
 3. **Extensions**
    - PNG export, theming, multi-library support, richer customization.
-

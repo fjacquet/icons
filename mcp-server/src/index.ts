@@ -2,7 +2,13 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
 
-import { ICON_CATALOG, LIBRARY_LABELS, resolveIconComponent, type IconLibraryId, type IconSettings } from './catalog';
+import {
+  ICON_CATALOG,
+  LIBRARY_LABELS,
+  resolveIconComponent,
+  type IconLibraryId,
+  type IconSettings,
+} from './catalog';
 import { renderIconToSvg } from './renderer';
 
 const VALID_LIBRARIES = Object.keys(LIBRARY_LABELS) as IconLibraryId[];
@@ -64,7 +70,14 @@ server.tool(
     library: z
       .enum(VALID_LIBRARIES as [IconLibraryId, ...IconLibraryId[]])
       .describe('Library ID, e.g. "fa6"'),
-    size: z.number().int().min(16).max(512).optional().default(64).describe('Size in px (default 64)'),
+    size: z
+      .number()
+      .int()
+      .min(16)
+      .max(512)
+      .optional()
+      .default(64)
+      .describe('Size in px (default 64)'),
     color: z.string().optional().default('#000000').describe('Icon color as hex (default #000000)'),
     background: z
       .string()

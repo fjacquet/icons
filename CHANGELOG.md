@@ -5,9 +5,8 @@
 ## [1.0.0] - 2026-03-12
 
 ### Added
-- VitePress documentation site deployed alongside the app at `/icons/docs/`
 
-### Added
+- VitePress documentation site deployed alongside the app at `/icons/docs/`
 - TypeScript migration (strict mode)
 - Icon catalog with 10 react-icons libraries (Font Awesome 6, Material Design, Feather, Bootstrap, Lucide, Remix, VS Code, Simple Icons, Tabler, Heroicons)
 - Icon grid with search and library filter

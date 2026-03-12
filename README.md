@@ -19,16 +19,16 @@ npm start        # http://localhost:3000
 
 ## Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm start` | Dev server |
-| `npm test` | Tests (watch mode) |
-| `npm test -- --watchAll=false` | Tests (single run) |
-| `npm run build` | Production build |
-| `npm run lint` | ESLint |
-| `npm run format` | Prettier (write) |
-| `npm run format:check` | Prettier (check) |
-| `npm run deploy` | Deploy to GitHub Pages |
+| Command                        | Description            |
+| ------------------------------ | ---------------------- |
+| `npm start`                    | Dev server             |
+| `npm test`                     | Tests (watch mode)     |
+| `npm test -- --watchAll=false` | Tests (single run)     |
+| `npm run build`                | Production build       |
+| `npm run lint`                 | ESLint                 |
+| `npm run format`               | Prettier (write)       |
+| `npm run format:check`         | Prettier (check)       |
+| `npm run deploy`               | Deploy to GitHub Pages |
 
 ## Icon libraries included
 

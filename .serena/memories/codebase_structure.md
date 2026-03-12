@@ -1,6 +1,7 @@
 # Codebase Structure
 
 ## Current state (scaffold only)
+
 ```
 src/
   App.js              # Default CRA template — to be replaced
@@ -20,6 +21,7 @@ docs/
 ```
 
 ## Target structure (from constitution.md)
+
 ```
 src/
   components/         # One folder per component; co-locate .tsx + .test.tsx + .css
@@ -40,6 +42,7 @@ src/
 ```
 
 ## Key data flow
+
 1. React app loads icon catalog (static import or generated manifest)
 2. User searches/filters, selects icons, adjusts settings
 3. `renderIcon.ts` serializes React icon component → SVG string

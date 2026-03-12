@@ -6,39 +6,46 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **React Icons to SVG Exporter** — a static React app (hosted on GitHub Pages) that lets users browse icon components, customize them (size, color, background), and download them as standalone SVG files or ZIP archives for use in presentations (PowerPoint, Keynote, Google Slides).
 
-The app is currently a fresh Create React App scaffold. The MVP features described in `docs/prd.md` are not yet implemented.
+**Current version: 1.0.0** — MVP fully implemented. Migrated from CRA to Vite. VitePress docs site at `/icons/docs/` deployed alongside the app.
 
 ## Commands
 
 ```bash
-npm start          # Dev server at http://localhost:3000
-npm test           # Run tests (interactive watch mode)
-npm test -- --watchAll=false  # Run tests once (CI mode)
+npm start          # Dev server at http://localhost:5173 (Vite)
+npm test           # Run tests once (vitest --run)
 npm run build      # Production build to build/
-npm run lint       # Lint (once added to package.json)
+npm run lint       # ESLint, max-warnings=0
+npm run docs:build # Build VitePress docs to build/docs/
+npm run deploy     # Build app + docs, then publish to gh-pages branch
 ```
 
-CI runs `npm ci && npm run build && npm test` across Node 18.x, 20.x, 22.x on every push/PR to `master`.
+CI runs `npm ci && npm run build && npm run docs:build && npm test` on Node 24 on every push/PR to `master`.
 
-## Planned Architecture
-
-The project must be migrated to TypeScript. Target structure per `docs/constitution.md`:
+## Architecture
 
 ```
 src/
   components/        # One folder per component, co-locate .tsx + .test.tsx + .css
+    IconCard/
     IconGrid/
     IconPreview/
-    ...
-  hooks/             # Custom hooks: useIconFilter, useIconSelection, etc.
+    SearchBar/
+    SettingsPanel/
+  hooks/             # useIconFilter, useIconSelection (with tests)
   lib/
     icons/           # catalog.ts (icon registry), renderIcon.ts (React→SVG serialization)
-    utils/           # download.ts (Blob download), zip.ts (JSZip batch export)
+    utils/           # download.ts (Blob download), zip.ts (fflate batch export)
   pages/
     Home/
+  types/             # icons.ts — shared interfaces and type aliases
+docs/
+  .vitepress/        # VitePress config (base: /icons/docs/, outDir: ../build/docs)
+  constitution.md
+  prd.md
+mcp-server/          # Separate TS project; list_icons, render_icon, render_icon_batch via stdio
 ```
 
-Key data flow: React icon component → rendered to SVG markup client-side → Blob → file download. For batch export, multiple SVGs are zipped with a JS library (JSZip or similar) and offered as a single `.zip` download. Generated SVGs must be **pure SVG** with no React/JS runtime dependency.
+Key data flow: React icon component → rendered to SVG markup client-side → Blob → file download. For batch export, multiple SVGs are zipped with **fflate** and offered as a single `.zip` download. Generated SVGs are **pure SVG** with no React/JS runtime dependency.
 
 ## Engineering Rules (from `docs/constitution.md`)
 

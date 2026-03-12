@@ -15,6 +15,7 @@ Run these before considering a task done (from `docs/constitution.md`):
    - Components under ~150 lines?
 
 ## PR Checklist
+
 - [ ] Code follows constitution (KISS, DRY, functional)
 - [ ] No `any` introduced
 - [ ] Lint, tests, and build pass locally

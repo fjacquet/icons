@@ -26,6 +26,7 @@ refactor: extract useIconSettings hook
 See [docs/constitution.md](docs/constitution.md) for the full engineering rules (TypeScript strict, functional components, KISS/DRY/YAGNI).
 
 Key points:
+
 - Function components only, no class components
 - No `any` — use `unknown` + narrowing if needed
 - Components ≤ ~150 lines
