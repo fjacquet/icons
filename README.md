@@ -34,6 +34,17 @@ npm start        # http://localhost:3000
 
 Font Awesome 6 · Material Design · Feather · Bootstrap · Lucide · Remix · VS Code · Simple Icons · Tabler · Heroicons
 
+## MCP server
+
+The icon catalog and SVG renderer are also available as an [MCP server](MCP.md), usable from Claude Desktop, Obsidian, or any MCP-compatible client.
+
+```bash
+cd mcp-server && npm install
+npm run mcp-server   # starts on stdio
+```
+
+See [MCP.md](MCP.md) for tool reference and client configuration.
+
 ## Deployment
 
 The app is a static React build hosted on GitHub Pages. CI runs on every push to `master` — build, format check, tests, and a security audit must all pass. The deploy workflow publishes to the `gh-pages` branch automatically.

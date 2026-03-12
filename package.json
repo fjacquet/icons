@@ -24,6 +24,7 @@
     "lint": "eslint src --ext .ts,.tsx --max-warnings=0",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\"",
+    "mcp-server": "cd mcp-server && npm start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "prepare": "husky"
