@@ -1,6 +1,21 @@
 import React from 'react';
 
-export type IconLibraryId = 'fa6' | 'md' | 'fi' | 'bs' | 'lu' | 'ri' | 'vsc' | 'si' | 'tb' | 'hi2';
+export type IconLibraryId =
+  | 'fa6'
+  | 'md'
+  | 'fi'
+  | 'bs'
+  | 'lu'
+  | 'ri'
+  | 'vsc'
+  | 'si'
+  | 'tb'
+  | 'hi2'
+  | 'gr'
+  | 'bi'
+  | 'pi'
+  | 'awsi'
+  | 'azurei';
 
 export interface IconEntry {
   name: string;

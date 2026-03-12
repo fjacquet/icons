@@ -8,6 +8,11 @@ import * as Vsc from 'react-icons/vsc';
 import * as Si from 'react-icons/si';
 import * as Tb from 'react-icons/tb';
 import * as Hi2 from 'react-icons/hi2';
+import * as Gr from 'react-icons/gr';
+import * as Bi from 'react-icons/bi';
+import * as Pi from 'react-icons/pi';
+import * as AwsIcons from 'aws-react-icons';
+import * as AzureIcons from '@threeveloper/azure-react-icons';
 
 import type { IconComponent, IconEntry, IconLibraryId } from '../../types/icons';
 
@@ -22,6 +27,11 @@ export const LIBRARY_LABELS: Record<IconLibraryId, string> = {
   si: 'Simple Icons',
   tb: 'Tabler',
   hi2: 'Heroicons',
+  gr: 'Grommet',
+  bi: 'Bootstrap Icons',
+  pi: 'Phosphor',
+  awsi: 'AWS Icons',
+  azurei: 'Azure Icons',
 };
 
 const libraryModules: Record<IconLibraryId, Record<string, unknown>> = {
@@ -35,6 +45,11 @@ const libraryModules: Record<IconLibraryId, Record<string, unknown>> = {
   si: Si as Record<string, unknown>,
   tb: Tb as Record<string, unknown>,
   hi2: Hi2 as Record<string, unknown>,
+  gr: Gr as Record<string, unknown>,
+  bi: Bi as Record<string, unknown>,
+  pi: Pi as Record<string, unknown>,
+  awsi: AwsIcons as Record<string, unknown>,
+  azurei: AzureIcons as Record<string, unknown>,
 };
 
 export const ICON_CATALOG: IconEntry[] = (
