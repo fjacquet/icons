@@ -1,8 +1,9 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
-import { ICON_CATALOG, LIBRARY_LABELS, type IconLibraryId } from './catalog.js';
-import { renderIconToSvg } from './renderer.js';
+
+import { ICON_CATALOG, LIBRARY_LABELS, resolveIconComponent, type IconLibraryId, type IconSettings } from './catalog';
+import { renderIconToSvg } from './renderer';
 
 const VALID_LIBRARIES = Object.keys(LIBRARY_LABELS) as IconLibraryId[];
 
@@ -21,24 +22,28 @@ server.tool(
       .enum(VALID_LIBRARIES as [IconLibraryId, ...IconLibraryId[]])
       .optional()
       .describe('Filter by library ID (fa6, md, fi, bs, lu, ri, vsc, si, tb, hi2)'),
-    limit: z.number().int().min(1).max(500).optional().default(50).describe('Max results (default 50)'),
+    limit: z
+      .number()
+      .int()
+      .min(1)
+      .max(500)
+      .optional()
+      .default(50)
+      .describe('Max results (default 50)'),
   },
   async ({ query, library, limit }) => {
     let results = ICON_CATALOG;
-
     if (library) results = results.filter((e) => e.libraryId === library);
     if (query) {
       const q = query.toLowerCase();
       results = results.filter((e) => e.name.toLowerCase().includes(q));
     }
-
     const slice = results.slice(0, limit);
     const text = JSON.stringify(
       slice.map((e) => ({ name: e.name, library: e.libraryId, label: e.libraryLabel })),
       null,
       2
     );
-
     return {
       content: [
         {
@@ -61,11 +66,17 @@ server.tool(
       .describe('Library ID, e.g. "fa6"'),
     size: z.number().int().min(16).max(512).optional().default(64).describe('Size in px (default 64)'),
     color: z.string().optional().default('#000000').describe('Icon color as hex (default #000000)'),
-    background: z.string().nullable().optional().default(null).describe('Background color as hex, or null for transparent'),
+    background: z
+      .string()
+      .nullable()
+      .optional()
+      .default(null)
+      .describe('Background fill color as hex, or null for transparent'),
   },
   async ({ name, library, size, color, background }) => {
     const entry = { name, libraryId: library, libraryLabel: LIBRARY_LABELS[library] };
-    const svg = renderIconToSvg(entry, { size, color, background: background ?? null });
+    const settings: IconSettings = { size, color, background: background ?? null };
+    const svg = renderIconToSvg(entry, settings);
     return { content: [{ type: 'text' as const, text: svg }] };
   }
 );
@@ -90,27 +101,26 @@ server.tool(
     background: z.string().nullable().optional().default(null),
   },
   async ({ icons, size, color, background }) => {
-    const opts = { size, color, background: background ?? null };
-    const results = icons.map(({ name, library }) => {
+    const settings: IconSettings = { size, color, background: background ?? null };
+    const content = icons.map(({ name, library }) => {
       try {
         const entry = { name, libraryId: library, libraryLabel: LIBRARY_LABELS[library] };
-        return { name, library, svg: renderIconToSvg(entry, opts), error: null };
+        return {
+          type: 'text' as const,
+          text: `<!-- ${library}:${name} -->\n${renderIconToSvg(entry, settings)}`,
+        };
       } catch (err) {
-        return { name, library, svg: null, error: String(err) };
+        return { type: 'text' as const, text: `ERROR ${library}:${name} — ${String(err)}` };
       }
     });
-
-    return {
-      content: results.map((r) => ({
-        type: 'text' as const,
-        text: r.error
-          ? `ERROR ${r.library}:${r.name} — ${r.error}`
-          : `<!-- ${r.library}:${r.name} -->\n${r.svg}`,
-      })),
-    };
+    return { content };
   }
 );
 
 // ── start ─────────────────────────────────────────────────────────────────────
-const transport = new StdioServerTransport();
-await server.connect(transport);
+async function main() {
+  const transport = new StdioServerTransport();
+  await server.connect(transport);
+}
+
+main().catch(console.error);

@@ -13,3 +13,5 @@
 - CI pipeline (format check, tests, build, audit)
 - Husky pre-commit hooks (lint-staged)
 - Dark mode support via `prefers-color-scheme` media query (all colors use CSS custom properties)
+- MCP server (`mcp-server/`) exposing `list_icons`, `render_icon`, `render_icon_batch` tools via stdio transport
+- README badges (CI, Deploy, License) and `.editorconfig`

@@ -1,3 +1,7 @@
+// NOTE: This file mirrors src/lib/icons/catalog.ts intentionally.
+// Importing directly from the CRA project's src/ causes tsc to load all
+// react-icons type definitions (~50k+ declarations), which OOMs the compiler.
+// Keeping this self-contained is the KISS trade-off for a separate build system.
 import * as Fa6 from 'react-icons/fa6';
 import * as Md from 'react-icons/md';
 import * as Fi from 'react-icons/fi';
@@ -18,7 +22,15 @@ export interface IconEntry {
   libraryLabel: string;
 }
 
-export type IconComponent = React.ComponentType<React.SVGProps<SVGSVGElement> & { size?: number | string }>;
+export interface IconSettings {
+  size: number;
+  color: string;
+  background: string | null;
+}
+
+export type IconComponent = React.ComponentType<
+  React.SVGProps<SVGSVGElement> & { size?: number | string }
+>;
 
 export const LIBRARY_LABELS: Record<IconLibraryId, string> = {
   fa6: 'Font Awesome 6',

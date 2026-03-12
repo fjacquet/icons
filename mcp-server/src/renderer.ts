@@ -1,14 +1,8 @@
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { resolveIconComponent, type IconEntry } from './catalog.js';
+import { resolveIconComponent, type IconEntry, type IconSettings } from './catalog';
 
-export interface RenderOptions {
-  size: number;
-  color: string;
-  background: string | null;
-}
-
-export function renderIconToSvg(entry: IconEntry, opts: RenderOptions): string {
+export function renderIconToSvg(entry: IconEntry, opts: IconSettings): string {
   const IconComp = resolveIconComponent(entry);
   if (!IconComp) throw new Error(`Icon not found: ${entry.libraryId}:${entry.name}`);
 
