@@ -1,5 +1,9 @@
 # React Icons to SVG Exporter
 
+[![CI](https://github.com/fjacquet/icons/actions/workflows/ci.yml/badge.svg)](https://github.com/fjacquet/icons/actions/workflows/ci.yml)
+[![Deploy](https://github.com/fjacquet/icons/actions/workflows/deploy.yml/badge.svg)](https://github.com/fjacquet/icons/actions/workflows/deploy.yml)
+[![License: MIT](https://img.shields.io/github/license/fjacquet/icons)](LICENSE)
+
 Browse icons from popular React icon libraries, customize them, and download standalone SVG files ready to drag into PowerPoint, Keynote, or Google Slides.
 
 **Live app:** https://fjacquet.github.io/icons
