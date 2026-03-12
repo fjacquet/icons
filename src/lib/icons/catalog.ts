@@ -14,7 +14,13 @@ import * as Pi from 'react-icons/pi';
 import * as AwsIcons from 'aws-react-icons';
 import * as AzureIcons from '@threeveloper/azure-react-icons';
 
+import React from 'react';
+
 import type { IconComponent, IconEntry, IconLibraryId } from '../../types/icons';
+
+function wrapAzureIcon(Comp: IconComponent): IconComponent {
+  return (props) => React.createElement(Comp, { viewBox: '0 0 18 18', ...props });
+}
 
 export const LIBRARY_LABELS: Record<IconLibraryId, string> = {
   fa6: 'Font Awesome 6',
@@ -73,5 +79,7 @@ export function entryKey(entry: IconEntry): string {
 export function resolveIconComponent(entry: IconEntry): IconComponent | null {
   const module = libraryModules[entry.libraryId];
   const comp = module?.[entry.name];
-  return typeof comp === 'function' ? (comp as IconComponent) : null;
+  if (typeof comp !== 'function') return null;
+  if (entry.libraryId === 'azurei') return wrapAzureIcon(comp as IconComponent);
+  return comp as IconComponent;
 }
