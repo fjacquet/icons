@@ -1,21 +1,21 @@
 import { createAndDownloadZip } from './zip';
 
 describe('createAndDownloadZip', () => {
-  let createObjectURL: jest.Mock;
-  let revokeObjectURL: jest.Mock;
-  let clickMock: jest.Mock;
+  let createObjectURL: vi.Mock;
+  let revokeObjectURL: vi.Mock;
+  let clickMock: vi.Mock;
   let originalCreateElement: typeof document.createElement;
 
   beforeEach(() => {
     originalCreateElement = document.createElement.bind(document);
-    createObjectURL = jest.fn().mockReturnValue('blob:mock-zip');
-    revokeObjectURL = jest.fn();
-    clickMock = jest.fn();
+    createObjectURL = vi.fn().mockReturnValue('blob:mock-zip');
+    revokeObjectURL = vi.fn();
+    clickMock = vi.fn();
 
     global.URL.createObjectURL = createObjectURL;
     global.URL.revokeObjectURL = revokeObjectURL;
 
-    jest.spyOn(document, 'createElement').mockImplementation((tag: string) => {
+    vi.spyOn(document, 'createElement').mockImplementation((tag: string) => {
       const el = originalCreateElement(tag);
       if (tag === 'a') (el as HTMLAnchorElement).click = clickMock;
       return el;
@@ -23,7 +23,7 @@ describe('createAndDownloadZip', () => {
   });
 
   afterEach(() => {
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
   });
 
   it('creates a Blob and triggers download', () => {

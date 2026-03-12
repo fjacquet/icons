@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { SearchBar } from '../../components/SearchBar/SearchBar';
 import { IconGrid } from '../../components/IconGrid/IconGrid';
@@ -13,14 +13,26 @@ import { createAndDownloadZip } from '../../lib/utils/zip';
 import type { IconSettings } from '../../types/icons';
 import './Home.css';
 
-const DEFAULT_SETTINGS: IconSettings = {
-  size: 64,
-  color: '#000000',
-  background: null,
-};
+function getDefaultSettings(): IconSettings {
+  const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
+  return { size: 64, color: prefersDark ? '#ffffff' : '#000000', background: null };
+}
 
 export function Home(): React.ReactElement {
-  const [settings, setSettings] = useState<IconSettings>(DEFAULT_SETTINGS);
+  const [settings, setSettings] = useState<IconSettings>(getDefaultSettings);
+  const colorSetByUser = useRef(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia?.('(prefers-color-scheme: dark)');
+    if (!mq) return;
+    const handler = (e: MediaQueryListEvent) => {
+      if (!colorSetByUser.current) {
+        setSettings((prev) => ({ ...prev, color: e.matches ? '#ffffff' : '#000000' }));
+      }
+    };
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
   const { query, setQuery, libraryFilter, setLibraryFilter, filteredIcons, availableLibraries } =
     useIconFilter();
@@ -69,7 +81,13 @@ export function Home(): React.ReactElement {
       <aside className="home__sidebar">
         <IconPreview entry={activeIcon} settings={settings} onExportSingle={handleExportSingle} />
         <hr className="home__divider" />
-        <SettingsPanel settings={settings} onSettingsChange={setSettings} />
+        <SettingsPanel
+          settings={settings}
+          onSettingsChange={(s) => {
+            colorSetByUser.current = true;
+            setSettings(s);
+          }}
+        />
         {selectedIcons.size > 0 && (
           <div className="home__bulk">
             <button className="home__bulk-btn" onClick={handleExportBulk}>

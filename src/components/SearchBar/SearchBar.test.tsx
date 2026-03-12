@@ -4,9 +4,9 @@ import { SearchBar } from './SearchBar';
 
 const defaultProps = {
   query: '',
-  onQueryChange: jest.fn(),
+  onQueryChange: vi.fn(),
   libraryFilter: 'all' as const,
-  onLibraryFilterChange: jest.fn(),
+  onLibraryFilterChange: vi.fn(),
   availableLibraries: ['fa6', 'md'] as Array<'fa6' | 'md'>,
 };
 
@@ -18,14 +18,14 @@ describe('SearchBar', () => {
   });
 
   it('calls onQueryChange when input changes', () => {
-    const onQueryChange = jest.fn();
+    const onQueryChange = vi.fn();
     render(<SearchBar {...defaultProps} onQueryChange={onQueryChange} />);
     fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'home' } });
     expect(onQueryChange).toHaveBeenCalledWith('home');
   });
 
   it('calls onLibraryFilterChange when select changes', () => {
-    const onLibraryFilterChange = jest.fn();
+    const onLibraryFilterChange = vi.fn();
     render(<SearchBar {...defaultProps} onLibraryFilterChange={onLibraryFilterChange} />);
     fireEvent.change(screen.getByRole('combobox'), { target: { value: 'md' } });
     expect(onLibraryFilterChange).toHaveBeenCalledWith('md');

@@ -17,6 +17,6 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run format:check
-      - run: npm test -- --watchAll=false --passWithNoTests
+      - run: npm test
       - run: npm run build
       - run: npm audit --production --audit-level=critical

@@ -1,4 +1,3 @@
-/* eslint-disable testing-library/render-result-naming-convention */
 import React from 'react';
 
 import { renderIconToSvgString } from './renderIcon';
