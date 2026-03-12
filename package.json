@@ -1,6 +1,6 @@
 {
   "name": "icons",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "homepage": "https://fjacquet.github.io/icons",
@@ -26,7 +26,8 @@
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\"",
     "mcp-server": "cd mcp-server && npm start",
-    "predeploy": "npm run build",
+    "docs:build": "vitepress build docs",
+    "predeploy": "npm run build && npm run docs:build",
     "deploy": "gh-pages -d build",
     "prepare": "husky"
   },
@@ -75,6 +76,7 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.57.0",
     "vite": "^8.0.0",
+    "vitepress": "^1.6.4",
     "vitest": "^4.1.0"
   }
 }

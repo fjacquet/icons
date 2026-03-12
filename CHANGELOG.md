@@ -1,6 +1,11 @@
 # Changelog
 
-## [0.1.0] - Unreleased
+## [Unreleased]
+
+## [1.0.0] - 2026-03-12
+
+### Added
+- VitePress documentation site deployed alongside the app at `/icons/docs/`
 
 ### Added
 - TypeScript migration (strict mode)
