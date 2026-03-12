@@ -1,0 +1,31 @@
+.icon-grid__wrapper {
+  padding: var(--spacing);
+}
+
+.icon-grid__count {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin: 0 0 12px;
+}
+
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+  gap: 8px;
+}
+
+.icon-grid__show-more {
+  margin-top: 16px;
+  width: 100%;
+  padding: 10px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--color-accent);
+}
+
+.icon-grid__show-more:hover {
+  background: var(--color-border);
+}

@@ -1,0 +1,73 @@
+.settings-panel {
+  padding: var(--spacing);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.settings-panel__row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.settings-panel__label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.settings-panel__range {
+  width: 100%;
+  accent-color: var(--color-accent);
+}
+
+.settings-panel__number {
+  width: 72px;
+  padding: 4px 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 13px;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.settings-panel__color-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.settings-panel__color-input {
+  width: 36px;
+  height: 28px;
+  padding: 2px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.settings-panel__swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.settings-panel__bg-toggle {
+  padding: 4px 10px;
+  font-size: 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+}
+
+.settings-panel__bg-toggle--active {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 8%, var(--color-bg));
+}

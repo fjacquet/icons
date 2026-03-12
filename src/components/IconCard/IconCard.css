@@ -1,0 +1,61 @@
+.icon-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  position: relative;
+  background: var(--color-bg);
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+  user-select: none;
+}
+
+.icon-card:hover {
+  border-color: var(--color-accent);
+  background: var(--color-surface);
+}
+
+.icon-card--selected {
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 8%, var(--color-bg));
+}
+
+.icon-card--active {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+.icon-card__checkbox-label {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  cursor: pointer;
+}
+
+.icon-card__glyph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+}
+
+.icon-card__fallback {
+  font-size: 20px;
+  color: var(--color-border);
+}
+
+.icon-card__name {
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--color-text-muted);
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}
