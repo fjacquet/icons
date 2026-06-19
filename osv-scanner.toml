@@ -1,0 +1,24 @@
+# OSV-Scanner ignore list.
+#
+# All waived advisories below are for `vite@5.x`, pulled ONLY transitively by
+# `vitepress` (the docs-site generator, a devDependency). vitepress 1.6.4 pins
+# `vite@^5.4.14` and cannot consume the patched vite 6.x line, so these cannot be
+# overridden without dropping vitepress. They are dev/build-time only (used to
+# build the static docs site), never shipped to users, and the affected vectors
+# are local-dev-server / Windows path-handling issues with no production exposure.
+# Re-check when vitepress publishes a release that depends on vite >= 6.4.x.
+
+[[IgnoredVulns]]
+id = "GHSA-4w7w-66w2-5vf9"
+ignoreUntil = 2026-09-19
+reason = "vite path traversal in optimized-deps .map handling; transitive via vitepress only (devDep, docs build), no vite 5.x fix available."
+
+[[IgnoredVulns]]
+id = "GHSA-fx2h-pf6j-xcff"
+ignoreUntil = 2026-09-19
+reason = "vite server.fs.deny bypass on Windows alternate paths; transitive via vitepress only (devDep, docs build), no vite 5.x fix available."
+
+[[IgnoredVulns]]
+id = "GHSA-v6wh-96g9-6wx3"
+ignoreUntil = 2026-09-19
+reason = "launch-editor NTLMv2 hash disclosure (Windows UNC) pulled via vite via vitepress; devDep, docs build only, no vite 5.x fix available."
