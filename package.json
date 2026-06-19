@@ -21,7 +21,9 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
+    "typecheck": "tsc --noEmit",
     "test": "vitest --run",
+    "test:run": "vitest run",
     "lint": "eslint src --ext .ts,.tsx --max-warnings=0",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\"",

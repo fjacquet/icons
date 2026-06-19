@@ -1,9 +1,10 @@
 import { downloadSvg } from './download';
+import type { Mock } from 'vitest';
 
 describe('downloadSvg', () => {
-  let createObjectURL: vi.Mock;
-  let revokeObjectURL: vi.Mock;
-  let clickMock: vi.Mock;
+  let createObjectURL: Mock;
+  let revokeObjectURL: Mock;
+  let clickMock: Mock;
   let originalCreateElement: typeof document.createElement;
 
   beforeEach(() => {
