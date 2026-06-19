@@ -21,7 +21,9 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
+    "typecheck": "tsc --noEmit",
     "test": "vitest --run",
+    "test:run": "vitest run",
     "lint": "eslint src --ext .ts,.tsx --max-warnings=0",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\"",
@@ -53,7 +55,15 @@
     ]
   },
   "overrides": {
-    "nth-check": "^2.1.1"
+    "nth-check": "^2.1.1",
+    "picomatch": "^2.3.2",
+    "esbuild": "^0.25.0",
+    "postcss": "^8.5.10",
+    "undici": "^7.28.0",
+    "yaml": "^2.8.3",
+    "flatted": "^3.4.2",
+    "brace-expansion": "^2.0.2",
+    "@babel/core": "^7.29.6"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
