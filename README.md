@@ -3,6 +3,7 @@
 [![CI](https://github.com/fjacquet/icons/actions/workflows/ci.yml/badge.svg)](https://github.com/fjacquet/icons/actions/workflows/ci.yml)
 [![Deploy](https://github.com/fjacquet/icons/actions/workflows/deploy.yml/badge.svg)](https://github.com/fjacquet/icons/actions/workflows/deploy.yml)
 [![License: MIT](https://img.shields.io/github/license/fjacquet/icons)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/fjacquet/icons?sort=semver)](https://github.com/fjacquet/icons/releases/latest)
 
 Browse icons from popular React icon libraries, customize them, and download standalone SVG files ready to drag into PowerPoint, Keynote, or Google Slides.
 
