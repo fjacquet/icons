@@ -4,6 +4,7 @@ on:
     tags: ['v*']
 permissions:
   contents: write
+  packages: write       # web-release npm/docker jobs declare it (validated even when skipped)
   id-token: write       # OIDC for build-provenance attestation
   attestations: write   # write the provenance attestation
 jobs:
