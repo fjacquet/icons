@@ -14,4 +14,4 @@ jobs:
       node-version: "24"
       publish-npm: false
       publish-docker: false
-      build-dir: "dist"
+      build-dir: "build"
