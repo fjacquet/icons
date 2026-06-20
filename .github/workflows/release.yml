@@ -1,0 +1,14 @@
+name: Release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  release:
+    uses: fjacquet/ci/.github/workflows/web-release.yml@v1
+    with:
+      node-version: "24"
+      publish-npm: false
+      publish-docker: false
+      build-dir: "dist"
