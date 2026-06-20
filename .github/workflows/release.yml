@@ -1,0 +1,16 @@
+name: Release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+  id-token: write       # OIDC for build-provenance attestation
+  attestations: write   # write the provenance attestation
+jobs:
+  release:
+    uses: fjacquet/ci/.github/workflows/web-release.yml@v1
+    with:
+      node-version: "24"
+      publish-npm: false
+      publish-docker: false
+      build-dir: "dist"
