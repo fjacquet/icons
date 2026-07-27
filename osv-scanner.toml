@@ -1,6 +1,6 @@
 # OSV-Scanner ignore list.
 #
-# All waived advisories below are for `vite@5.x`, pulled ONLY transitively by
+# The first group of waived advisories is for `vite@5.x`, pulled ONLY transitively by
 # `vitepress` (the docs-site generator, a devDependency). vitepress 1.6.4 pins
 # `vite@^5.4.14` and cannot consume the patched vite 6.x line, so these cannot be
 # overridden without dropping vitepress. They are dev/build-time only (used to
@@ -22,3 +22,8 @@ reason = "vite server.fs.deny bypass on Windows alternate paths; transitive via 
 id = "GHSA-v6wh-96g9-6wx3"
 ignoreUntil = 2026-09-19
 reason = "launch-editor NTLMv2 hash disclosure (Windows UNC) pulled via vite via vitepress; devDep, docs build only, no vite 5.x fix available."
+
+[[IgnoredVulns]]
+id = "GHSA-mh99-v99m-4gvg"
+ignoreUntil = 2026-10-27
+reason = "brace-expansion@2.1.2 DoS via unbounded expansion, reached only through eslint-plugin-react@7.37.5 > minimatch@3.1.5 — lint-time devDependency, never shipped. The 2.x line has no fixed release; 5.0.8 changed the CJS entry point from a default callable to a named { expand } export, which minimatch@3 cannot consume. Dropping the `brace-expansion` override instead resolves that path down to 1.1.16, which regresses `npm run lint` into an out-of-memory crash, so the override is deliberately kept at ^2.1.2 (this also clears GHSA-3jxr-9vmj-r5cp). Re-check when eslint-plugin-react drops its minimatch@3 dependency."

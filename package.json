@@ -62,8 +62,8 @@
     "undici": "^7.28.0",
     "yaml": "^2.8.3",
     "flatted": "^3.4.2",
-    "brace-expansion": "^2.0.2",
-    "@babel/core": "^7.29.6"
+    "@babel/core": "^7.29.6",
+    "brace-expansion": "^2.1.2"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
