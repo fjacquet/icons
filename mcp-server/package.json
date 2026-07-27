@@ -19,6 +19,11 @@
     "typescript": "^5.9.3"
   },
   "overrides": {
-    "esbuild": "^0.28.1"
+    "@hono/node-server": "^2.0.5",
+    "body-parser": "^2.3.0",
+    "brace-expansion": "^2.1.2",
+    "esbuild": "^0.28.1",
+    "fast-uri": "^3.1.4",
+    "hono": "^4.12.27"
   }
 }
