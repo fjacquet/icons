@@ -10,18 +10,18 @@
 
 [[IgnoredVulns]]
 id = "GHSA-4w7w-66w2-5vf9"
-ignoreUntil = 2026-09-19
-reason = "vite path traversal in optimized-deps .map handling; transitive via vitepress only (devDep, docs build), no vite 5.x fix available."
+ignoreUntil = 2026-11-12
+reason = "vite path traversal in optimized-deps .map handling; transitive via vitepress only (devDep, docs build), no vite 5.x fix available. Renewed 2026-09-13: vitepress@latest is still 1.6.4 and still depends on vite@^5.4.14, so the fix remains unavailable without dropping vitepress."
 
 [[IgnoredVulns]]
 id = "GHSA-fx2h-pf6j-xcff"
-ignoreUntil = 2026-09-19
-reason = "vite server.fs.deny bypass on Windows alternate paths; transitive via vitepress only (devDep, docs build), no vite 5.x fix available."
+ignoreUntil = 2026-11-12
+reason = "vite server.fs.deny bypass on Windows alternate paths; transitive via vitepress only (devDep, docs build), no vite 5.x fix available. Renewed 2026-09-13: vitepress@latest is still 1.6.4 and still depends on vite@^5.4.14, so the fix remains unavailable without dropping vitepress."
 
 [[IgnoredVulns]]
 id = "GHSA-v6wh-96g9-6wx3"
-ignoreUntil = 2026-09-19
-reason = "launch-editor NTLMv2 hash disclosure (Windows UNC) pulled via vite via vitepress; devDep, docs build only, no vite 5.x fix available."
+ignoreUntil = 2026-11-12
+reason = "launch-editor NTLMv2 hash disclosure (Windows UNC) pulled via vite via vitepress; devDep, docs build only, no vite 5.x fix available. Renewed 2026-09-13: vitepress@latest is still 1.6.4 and still depends on vite@^5.4.14, so the fix remains unavailable without dropping vitepress."
 
 [[IgnoredVulns]]
 id = "GHSA-mh99-v99m-4gvg"
