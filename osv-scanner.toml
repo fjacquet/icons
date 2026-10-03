@@ -7,3 +7,20 @@
 # build the static docs site), never shipped to users, and the affected vectors
 # are local-dev-server / Windows path-handling issues with no production exposure.
 # Re-check when vitepress publishes a release that depends on vite >= 6.4.x.
+
+[[IgnoredVulns]]
+id = "GHSA-vfj7-8cjw-p6xm"
+ignoreUntil = 2026-12-01
+reason = """
+braces stack-exhaustion denial of service through deeply nested brace patterns.
+Pulled transitively by glob tooling (micromatch) in the root lockfile.
+
+No fix exists to upgrade to. The OSV record is {introduced: 0, last_affected: 3.0.3} and 3.0.3
+is the latest version published on npm, so every release of braces is affected.
+
+Not reachable as an attack: braces expands glob patterns taken from the repo's own build and
+lint configuration on a developer or CI machine, never from an untrusted party, and the worst
+case is a hung build or lint run.
+
+Re-check at expiry: drop this waiver the moment braces ships a patched release.
+"""
