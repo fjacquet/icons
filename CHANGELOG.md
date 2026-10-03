@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Security
+
+- Refreshed the root and `mcp-server/` lockfiles within existing ranges; `osv-scanner`
+  recursive scan is clean.
+- Removed the now-unused `osv-scanner.toml` waivers for **GHSA-4w7w-66w2-5vf9**,
+  **GHSA-fx2h-pf6j-xcff**, **GHSA-v6wh-96g9-6wx3** (vitepress/vite transitives, already
+  deduped to a fixed `vite`) and **GHSA-mh99-v99m-4gvg**.
+
 ## [1.0.3] - 2026-09-13
 
 ### Security
