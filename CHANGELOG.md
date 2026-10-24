@@ -2,7 +2,15 @@
 
 ## [Unreleased]
 
+## [1.0.4] - 2026-10-24
+
 ### Security
+
+- Lockfile refresh within existing ranges: `vite` moves to its patched release.
+- `mcp-server/`: `zod` ^3.25.76 → ^4.6.6 for GHSA-mrhx-c7xc-m3w5 (memory exhaustion validating
+  oversized collections; no 3.x fix). `@modelcontextprotocol/sdk` accepts zod 4; tools list and
+  validate arguments as before.
+- Removed the `osv-scanner.toml` waiver for GHSA-vfj7-8cjw-p6xm: the `braces` advisory was withdrawn.
 
 - Refreshed the root and `mcp-server/` lockfiles within existing ranges; `osv-scanner`
   recursive scan is clean.
