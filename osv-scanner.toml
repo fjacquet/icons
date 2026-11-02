@@ -1,3 +1,14 @@
 # OSV-Scanner ignore list. Empty: no advisory is currently waived.
 #
 # Waive per advisory id with [[IgnoredVulns]], a reason and an ignoreUntil date.
+
+[[IgnoredVulns]]
+id = "GHSA-g3hv-75wg-m249"
+ignoreUntil = 2027-01-30
+reason = """
+minimatch globparts amplification DoS (published 2026-10-30, fixed in 11.0.1 only; no
+backport exists for the 3.x/5.x/10.x lines still required by eslint, filelist, typescript-estree).
+Dev-only lint/build toolchain. Not reachable: patterns come from repo-owned config files, never
+from untrusted input, and the worst case is a hung local build. Re-check at expiry; drop once
+the toolchain parents accept minimatch >=11.0.1.
+"""
